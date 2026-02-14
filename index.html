@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>설날 AI 해커톤 안내 · 심사표</title>
+  <style>
+    :root {
+      --bg:#0b0f19; --card:#121a2a; --muted:#9aa6c2; --text:#e8eefc;
+      --accent:#6ee7ff; --accent2:#a78bfa; --ok:#34d399; --warn:#fbbf24;
+      --border:rgba(255,255,255,.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+      background: radial-gradient(1200px 700px at 15% 10%, rgba(110,231,255,.15), transparent 55%),
+                  radial-gradient(1000px 700px at 85% 20%, rgba(167,139,250,.18), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    header {
+      padding:24px 16px 10px;
+      max-width: 980px; margin: 0 auto;
+    }
+    .title {
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    }
+    h1 { margin:0; font-size: 22px; letter-spacing:-.3px; }
+    .pill {
+      display:inline-flex; gap:8px; align-items:center;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      padding:8px 12px; border-radius:999px; color: var(--muted); font-size: 13px;
+    }
+    .container { max-width: 980px; margin: 0 auto; padding: 10px 16px 40px; }
+    .grid {
+      display:grid; grid-template-columns: 1.15fr .85fr; gap:14px;
+    }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+    .card h2 { margin:0 0 10px; font-size: 16px; color: #ffffff; }
+    .muted { color: var(--muted); }
+    .kvs { display:grid; grid-template-columns: 140px 1fr; gap:8px 10px; }
+    @media (max-width: 520px) { .kvs { grid-template-columns: 1fr; } }
+    .kvk { color: var(--muted); }
+    .kvv { color: var(--text); }
+    .hr { height:1px; background: var(--border); margin: 12px 0; }
+    .badge {
+      display:inline-flex; align-items:center; gap:6px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.15);
+      padding:6px 10px; border-radius:999px; font-size: 12px; color: var(--muted);
+    }
+    .badge strong { color: #fff; font-weight: 700; }
+    .rules ul { margin: 8px 0 0 18px; padding:0; color: var(--text); }
+    .rules li { margin: 6px 0; }
+    .callout {
+      border: 1px dashed rgba(110,231,255,.35);
+      background: rgba(110,231,255,.06);
+      padding: 12px; border-radius: 12px;
+    }
+    .callout b { color: #fff; }
+    .scoregrid { display:grid; gap: 10px; }
+    .row {
+      display:grid; grid-template-columns: 1fr 170px 90px;
+      gap: 10px; align-items:center;
+      padding:10px; border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,.12);
+    }
+    @media (max-width: 640px){
+      .row{ grid-template-columns: 1fr; }
+    }
+    .row .desc { font-size: 13px; color: var(--muted); margin-top: 3px; }
+    select, input, textarea, button {
+      width:100%;
+      padding: 10px 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 12px;
+      outline: none;
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    button{
+      cursor:pointer;
+      background: linear-gradient(90deg, rgba(110,231,255,.22), rgba(167,139,250,.22));
+      border: 1px solid rgba(255,255,255,.16);
+      font-weight: 700;
+    }
+    button:hover { filter: brightness(1.08); }
+    .totals {
+      display:grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      margin-top: 12px;
+    }
+    @media (max-width: 520px){ .totals{ grid-template-columns: 1fr; } }
+    .big {
+      font-size: 28px; font-weight: 800; letter-spacing: -.5px;
+    }
+    .mini { font-size: 12px; color: var(--muted); }
+    .ok { color: var(--ok); }
+    .warn { color: var(--warn); }
+    .footer {
+      margin-top: 14px; font-size: 12px; color: var(--muted);
+      display:flex; gap:8px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    }
+    .copybox{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .copybox button { width:auto; padding:10px 12px; }
+    .smallbtn { width:auto; padding:8px 10px; font-size: 12px; border-radius: 999px; }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    .tag {
+      display:inline-block; padding: 2px 8px; border-radius: 999px;
+      border: 1px solid var(--border); background: rgba(255,255,255,.04);
+      font-size: 12px; color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">
+      <div>
+        <h1>설날 AI 해커톤 안내 · 심사표</h1>
+        <div class="muted" style="margin-top:6px;">어른들이 AI를 몰라도 공정하게 평가할 수 있도록 “이해/창의/설계/생각” 중심으로 구성했습니다.</div>
+      </div>
+      <div class="pill" title="공유용 단일 파일">
+        ✅ 단일 HTML · 모바일 채점 가능
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+
+      <!-- LEFT: 안내 -->
+      <section class="card">
+        <h2>행사 개요</h2>
+        <div class="kvs">
+          <div class="kvk">발표/심사</div>
+          <div class="kvv"><b>2월 16일(월) 저녁</b> · 오프라인/Zoom 가능</div>
+
+          <div class="kvk">총상금</div>
+          <div class="kvv"><b>100만원</b> (1등 50 / 2등 30 / 3등 20)</div>
+
+          <div class="kvk">대상</div>
+          <div class="kvv">조카들(16~31세) · 전공 무관 · 개인/팀(최대 3인)</div>
+
+          <div class="kvk">AI 사용</div>
+          <div class="kvv"><b>ChatGPT Pro</b> 활용(공지됨) + 필요 시 다른 AI 도구 자유</div>
+        </div>
+
+        <div class="hr"></div>
+
+        <h2>이번 해커톤의 핵심</h2>
+        <div class="callout">
+          <div style="line-height:1.6;">
+            <b>“문제를 해결했나?”</b>보다<br/>
+            <b>“무엇을 해보고 싶었고, AI로 얼마나 창의적으로 실현했나?”</b>가 핵심입니다.
+          </div>
+          <div class="hint">정답은 없습니다. 만들고 싶은 것/실험하고 싶은 것/상상한 아이디어 모두 가능.</div>
+        </div>
+
+        <div class="hr"></div>
+
+        <h2>발표 필수 포함(어른 친화형)</h2>
+        <div class="rules">
+          <ul>
+            <li><b>내가 하고 싶었던 것</b> (한 문장)</li>
+            <li><b>왜 하고 싶었는지</b> (동기/배경)</li>
+            <li><b>AI가 어떤 도움을 줬는지</b> (과정)</li>
+            <li><b>최종 결과</b> (시연/샘플/영상/캡처)</li>
+            <li><span class="tag">권장</span> 프롬프트 3단계(초기→수정→최종) 캡처</li>
+          </ul>
+        </div>
+
+        <div class="hr"></div>
+
+        <h2>심사 원칙(어른용)</h2>
+        <div class="rules">
+          <ul>
+            <li>기술/코딩 난이도는 보지 않습니다.</li>
+            <li><b>이해가 됐는지</b>, <b>아이디어가 새로웠는지</b>, <b>본인 생각이 보였는지</b>를 봅니다.</li>
+            <li>점수는 <b>별점(1~5)</b>만 선택하면 자동 계산됩니다.</li>
+          </ul>
+        </div>
+
+        <div class="footer">
+          <div>공유 팁: 이 파일을 카톡으로 보내거나, 구글드라이브/네이버 MYBOX에 올려 링크 공유</div>
+          <div class="copybox">
+            <button class="smallbtn" id="btnPrint">🖨️ 인쇄/PDF</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: 심사표 -->
+      <section class="card">
+        <h2>심사표 (어른용 · 별점)</h2>
+
+        <div class="kvs" style="margin-bottom:10px;">
+          <div class="kvk">심사위원(어른)</div>
+          <div class="kvv"><input id="judgeName" placeholder="예: 큰아버지, 이모, 할아버지" /></div>
+
+          <div class="kvk">참가자/팀명</div>
+          <div class="kvv"><input id="teamName" placeholder="예: 1팀(OOO), 민수, 지은&서연" /></div>
+
+          <div class="kvk">참가자 나이</div>
+          <div class="kvv"><input id="age" type="number" min="10" max="99" placeholder="예: 16" /></div>
+        </div>
+
+        <div class="scoregrid" id="scoreGrid">
+          <!-- rows injected by JS -->
+        </div>
+
+        <div style="margin-top:10px;">
+          <label class="muted" for="memo"><b>한 줄 코멘트(선택)</b></label>
+          <textarea id="memo" placeholder="예: 아이디어가 참신했고 설명이 쉬웠음 / 다음 단계가 기대됨"></textarea>
+        </div>
+
+        <div class="totals">
+          <div class="card" style="padding:12px; box-shadow:none;">
+            <div class="mini">총점 (자동 계산)</div>
+            <div class="big" id="totalScore">0</div>
+            <div class="mini" id="ageBonusInfo">연령 보정: 없음</div>
+          </div>
+          <div class="card" style="padding:12px; box-shadow:none;">
+            <div class="mini">판정 도움 문장</div>
+            <div style="line-height:1.55;">
+              <span class="badge"><strong>1</strong> 이해가 쉬웠나?</span><br/>
+              <span class="badge"><strong>2</strong> 새롭고 기억 남나?</span><br/>
+              <span class="badge"><strong>3</strong> AI를 끌고 갔나?</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; gap:10px; margin-top:12px;">
+          <button id="btnSave">✅ 점수 저장(이 기기)</button>
+          <button id="btnShare">📤 점수 요약 복사(카톡/Zoom 채팅용)</button>
+          <button id="btnReset" class="smallbtn">↩️ 초기화</button>
+          <div class="hint">
+            * “저장”은 이 휴대폰/PC에만 저장됩니다(로컬 저장). 가족 단톡방에는 “요약 복사”를 붙여넣으면 됩니다.
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    // ====== 평가 항목(어른 친화형) ======
+    // 각 항목 1~5점. 가중치로 100점 환산.
+    const criteria = [
+      {
+        key: "want",
+        title: "하고 싶은 것이 명확했나",
+        desc: "진짜 해보고 싶은 게 한 문장으로 설명되고, 동기가 납득됨",
+        weight: 20
+      },
+      {
+        key: "understand",
+        title: "설명이 이해되었나",
+        desc: "어려운 말 없이 전달되어 ‘내가 이해했다’고 말할 수 있음",
+        weight: 20
+      },
+      {
+        key: "creative",
+        title: "아이디어가 새로웠나",
+        desc: "뻔하지 않고 ‘오~’ 하는 포인트가 있었음",
+        weight: 20
+      },
+      {
+        key: "ai_use",
+        title: "AI를 도구로 잘 활용한 듯했나",
+        desc: "AI 답을 그냥 읽지 않고, 본인 판단/수정/선택이 보였음",
+        weight: 20
+      },
+      {
+        key: "growth",
+        title: "앞으로 더 커질 가능성이 보였나",
+        desc: "다음 단계가 떠오르고 확장할 여지가 느껴짐",
+        weight: 20
+      }
+    ];
+
+    // 연령 보정(선택): 19세 이하 +5점
+    const AGE_BONUS_MAX = 5;
+    const AGE_BONUS_THRESHOLD = 19;
+
+    // UI 생성
+    const scoreGrid = document.getElementById("scoreGrid");
+    function makeRow(c) {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `
+        <div>
+          <div><b>${c.title}</b> <span class="muted">(${c.weight}점)</span></div>
+          <div class="desc">${c.desc}</div>
+        </div>
+        <div>
+          <select data-key="${c.key}">
+            <option value="">별점 선택</option>
+            <option value="1">★ 1 (아쉬움)</option>
+            <option value="2">★ 2</option>
+            <option value="3">★ 3 (보통)</option>
+            <option value="4">★ 4</option>
+            <option value="5">★ 5 (매우 좋음)</option>
+          </select>
+          <div class="hint">별점 1~5</div>
+        </div>
+        <div class="muted" style="text-align:right;">
+          <div><span id="p_${c.key}">0</span>점</div>
+        </div>
+      `;
+      return row;
+    }
+
+    criteria.forEach(c => scoreGrid.appendChild(makeRow(c)));
+
+    const totalScoreEl = document.getElementById("totalScore");
+    const ageEl = document.getElementById("age");
+    const ageBonusInfoEl = document.getElementById("ageBonusInfo");
+
+    function calc() {
+      let total = 0;
+      let filled = 0;
+
+      criteria.forEach(c => {
+        const sel = document.querySelector(`select[data-key="${c.key}"]`);
+        const v = Number(sel.value);
+        const pointEl = document.getElementById(`p_${c.key}`);
+
+        if (!isNaN(v) && v >= 1 && v <= 5) {
+          filled++;
+          // 1~5를 0~가중치로 환산: (v/5)*weight
+          const pts = Math.round((v / 5) * c.weight);
+          pointEl.textContent = pts;
+          total += pts;
+        } else {
+          pointEl.textContent = 0;
+        }
+      });
+
+      // 연령 보정
+      const age = Number(ageEl.value);
+      let bonus = 0;
+      if (!isNaN(age) && age > 0 && age <= 99 && age <= AGE_BONUS_THRESHOLD) {
+        bonus = AGE_BONUS_MAX;
+      }
+      const finalTotal = Math.min(100 + AGE_BONUS_MAX, total + bonus);
+
+      totalScoreEl.textContent = finalTotal;
+
+      if (bonus > 0) {
+        ageBonusInfoEl.innerHTML = `연령 보정: <b class="ok">+${bonus}점</b> (만 ${AGE_BONUS_THRESHOLD}세 이하)`;
+      } else {
+        ageBonusInfoEl.textContent = "연령 보정: 없음";
+      }
+
+      // 안내: 항목 미선택 경고
+      if (filled < criteria.length) {
+        totalScoreEl.classList.remove("ok");
+        totalScoreEl.classList.add("warn");
+      } else {
+        totalScoreEl.classList.remove("warn");
+        totalScoreEl.classList.add("ok");
+      }
+    }
+
+    document.querySelectorAll("select").forEach(s => s.addEventListener("change", calc));
+    ageEl.addEventListener("input", calc);
+
+    // 저장/불러오기 (localStorage)
+    const LS_KEY = "family_hackathon_score_v1";
+
+    function getFormData() {
+      const data = {
+        judgeName: document.getElementById("judgeName").value.trim(),
+        teamName: document.getElementById("teamName").value.trim(),
+        age: document.getElementById("age").value.trim(),
+        memo: document.getElementById("memo").value.trim(),
+        scores: {}
+      };
+      criteria.forEach(c => {
+        const sel = document.querySelector(`select[data-key="${c.key}"]`);
+        data.scores[c.key] = sel.value;
+      });
+      data.total = document.getElementById("totalScore").textContent;
+      return data;
+    }
+
+    function setFormData(data) {
+      if (!data) return;
+      document.getElementById("judgeName").value = data.judgeName || "";
+      document.getElementById("teamName").value = data.teamName || "";
+      document.getElementById("age").value = data.age || "";
+      document.getElementById("memo").value = data.memo || "";
+      criteria.forEach(c => {
+        const sel = document.querySelector(`select[data-key="${c.key}"]`);
+        if (data.scores && data.scores[c.key] != null) sel.value = data.scores[c.key];
+      });
+      calc();
+    }
+
+    document.getElementById("btnSave").addEventListener("click", () => {
+      const data = getFormData();
+      localStorage.setItem(LS_KEY, JSON.stringify(data));
+      alert("저장 완료! (이 기기에서만 저장됩니다)");
+    });
+
+    // 점수 요약 복사(카톡/Zoom 채팅용)
+    document.getElementById("btnShare").addEventListener("click", async () => {
+      calc();
+      const data = getFormData();
+
+      const judge = data.judgeName || "심사위원";
+      const team = data.teamName || "참가자/팀";
+      const age = data.age ? `${data.age}세` : "나이 미기재";
+      const total = data.total || "0";
+
+      // 항목별 별점 요약
+      const parts = criteria.map(c => {
+        const v = data.scores[c.key] || "-";
+        return `${c.title}:${v}`;
+      }).join(" / ");
+
+      const memo = data.memo ? `\n코멘트: ${data.memo}` : "";
+      const text =
+`[AI 해커톤 심사]
+- 심사: ${judge}
+- 대상: ${team} (${age})
+- 총점: ${total}점
+- 별점: ${parts}${memo}`;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        alert("요약이 복사되었습니다! 단톡방/Zoom 채팅에 붙여넣으세요.");
+      } catch (e) {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        alert("요약이 복사되었습니다! 단톡방/Zoom 채팅에 붙여넣으세요.");
+      }
+    });
+
+    document.getElementById("btnReset").addEventListener("click", () => {
+      if (!confirm("입력 내용을 초기화할까요?")) return;
+      localStorage.removeItem(LS_KEY);
+      setFormData({ judgeName:"", teamName:"", age:"", memo:"", scores:{} });
+      document.querySelectorAll("select").forEach(s => s.value = "");
+      calc();
+    });
+
+    document.getElementById("btnPrint").addEventListener("click", () => window.print());
+
+    // 초기 로드
+    try {
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) setFormData(JSON.parse(saved));
+    } catch (e) {}
+    calc();
+  </script>
+</body>
+</html>
